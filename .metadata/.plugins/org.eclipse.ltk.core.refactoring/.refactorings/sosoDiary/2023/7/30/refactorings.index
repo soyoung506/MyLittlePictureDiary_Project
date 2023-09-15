@@ -1,0 +1,22 @@
+1690271251747	Rename resource 'header.html'
+1690271331504	Rename resource 'footer.html'
+1690271354918	Rename resource 'footerjsp'
+1690272989736	Rename resource 'commonInfo'
+1690273002819	Rename resource 'diaryInfo'
+1690273007483	Rename resource 'memberInfo'
+1690273394870	Rename type 'ProfileController'
+1690273413920	Rename type 'ProfileControllerImple'
+1690273422563	Rename type 'ProfileDAO'
+1690273429624	Rename type 'ProfileDAOImpl'
+1690273439455	Rename type 'ProfileService'
+1690273446054	Rename type 'ProfileServiceImpl'
+1690273461665	Rename type 'ProfileVO'
+1690273469601	Delete element
+1690359700645	Delete elements
+1690361343999	Delete element
+1690361363497	Copy package
+1690361367752	Copy package
+1690361371832	Copy compilation unit
+1690361388589	Rename type 'MemberVO'
+1690386825627	Rename resource '내가그린지지.jpg'
+1690388430331	Rename resource 'profile.xml'

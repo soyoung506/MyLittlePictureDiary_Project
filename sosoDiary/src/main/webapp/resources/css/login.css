@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+
+body {
+    background-color: #FCFCFC;
+}
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 1500px;
+    margin: 100px auto;
+}
+.login, .findInfo {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.login h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #3F3F3F;
+    margin-bottom: 70px;
+}
+.login .gBtn {
+	font-size: 1.15em;
+    color: #888;
+    text-decoration: underline;
+}
+
+/* fieldset loginText */
+.loginText {
+    position: relative;
+    padding: 0;
+}
+.loginText input {
+    position: relative;
+    display: block;
+    width: 600px;
+    height: 70px;
+    border: 1px solid #FFB500;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #3F3F3F;
+    padding: 0 30px;
+    margin-top: 50px;
+}
+.loginText input:focus {
+    outline: 3px solid #FFB500;
+}
+.loginText p.checkLogin {
+    font-family: "pretendard";
+    font-weight: 400;
+    font-size: 1em;
+    color: #ff0000;
+    text-align: left;
+    padding: 10px;
+}
+
+/* input submit */
+input[type="submit"] {
+    position: relative;
+    width: 600px;
+    height: 70px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 2em;
+    color: #fff;
+    background-color: #FFD05C;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 75px 0 100px;
+}
+
+/* section findInfo */
+.findInfo div {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;
+}
+.findInfo h2 a{
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 2em;
+    color: #FFB500;
+}
+.findInfo p {
+    position: relative;
+    margin-top: 50px;
+    height: 25px;
+}
+.findInfo p a {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #888888;
+    text-decoration: underline;
+}
+.findInfo p a.findId {
+    position: absolute;
+    left: 0;
+}
+.findInfo p a.findPwd {
+    position: absolute;
+    right: 0;
+}

@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'UhBeeSeulvely';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSeulvely.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+footer{
+    background-color: #CCD5AE;
+    height: 170px;
+    width: 100%;
+    user-select: none;
+}
+
+.footerBox{
+    width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footerBox ul {
+	display: flex;
+	margin-left: 570px;
+	padding-top: 60px;
+}
+.footerBox ul li:not(:last-child) {
+	margin-right: 50px;
+}
+.footerBox ul li a {
+	font-family: 'UhBeeSeulvely';
+    font-size: 1.2em;
+    color: rgb(40, 40, 40);
+    text-decoration: none;
+}
+
+.footerBox h2{
+    color: rgb(40, 40, 40);
+    letter-spacing: 4px;
+    font-size: 1em;
+    padding: 60px 0 10px;
+}

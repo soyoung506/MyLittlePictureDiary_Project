@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+
+body {
+    background-color: #FCFCFC;
+}
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 1500px;
+    margin: 100px auto;
+}
+/* intro, procedure 공통 */
+.intro, .procedure {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+}
+.intro h1, .procedure h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #FFB500;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.intro ul, .procedure ul {
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin: 0 auto;
+}
+/* intro */
+.intro ul {
+	width: 600px;
+}
+.intro ul li {
+    position: relative;
+    width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    display: flex;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+.intro h2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    margin-right: 110px;
+}
+.intro h2 img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: none;
+}
+.intro div.introText {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-top: 90px;
+    text-align: right;
+    font-family: "humanBS";
+    font-weight: 400;
+    color: #000000;
+}
+.intro div h3 {
+    font-size: 2em;
+    margin-bottom: 100px;
+}
+.intro div.introText div {
+    position: relative;
+    font-size: 1.2em;
+}
+.intro div p:not(:last-child){
+    margin-bottom: 8px;
+}
+.intro div p a:hover{
+    text-decoration: underline;
+}
+
+/* procedure */
+.procedure {
+    margin: 200px auto;
+}
+.procedure ul li:not(:last-child) {
+    margin-right: 55px;
+}
+.procedure ul img {
+    position: relative;
+    width: 330px;
+}
+.procedure div.notion {
+    position: relative;
+    width: 150px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 25px;
+    margin-top: 50px;
+    margin-left: 950px;
+}
+.procedure div.notion a {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #000000;
+    display: inline-block;
+    width: 150px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 2px solid #FFB500;
+}

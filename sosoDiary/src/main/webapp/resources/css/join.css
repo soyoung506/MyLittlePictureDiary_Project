@@ -1,0 +1,183 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+
+body {
+    background-color: #FCFCFC;
+}
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+
+.content {
+    position: relative;
+    width: 1500px;
+    margin: 100px auto;
+}
+.join {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.join h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #3F3F3F;
+    margin-bottom: 70px;
+}
+
+/* fieldset joinText */
+.joinText {
+    position: relative;
+    padding: 0;
+}
+.joinText input {
+    position: relative;
+    display: block;
+    width: 600px;
+    height: 70px;
+    border: 1px solid #FFB500;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #3F3F3F;
+    padding: 0 30px;
+    margin-top: 50px;
+}
+.joinText input:focus {
+    outline: 3px solid #FFB500;
+    /* outline-offset: 3px; */
+}
+/* 제이쿼리 addClass */
+.joinText p.checkJoin {
+    font-family: "pretendard";
+    font-weight: 400;
+    font-size: 1em;
+    color: #ff0000;
+    text-align: left;
+    padding: 10px;
+}
+
+/* fieldset joinCheck */
+.joinCheck {
+    position: relative;
+    height: 100px;
+    padding: 0;
+    margin: 100px auto 0;
+}
+.joinCheck p {
+    position: relative;
+    height: 40px;
+}
+.joinCheck p span {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    font-family: "pretendard";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.joinCheck p input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #FFB500;
+    cursor: pointer;
+    accent-color: #FFB500;
+}
+
+/* input submit */
+input[type="submit"] {
+    position: relative;
+    width: 600px;
+    height: 70px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 2em;
+    color: #fff;
+    background-color: #FFD05C;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+/* 팝업창 */
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+}
+.popup .popup_content {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-color: #fff;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60px;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    line-height: 30px;
+    color: #000000;
+}
+/* .popup .popup_content::-webkit-scrollbar {
+    display: none;
+} */
+.popup .popup_content .popup_close {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-left: 470px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    text-align: center;
+    font-family: "humanBS";
+    font-weight: 600;
+    font-size: 1.3em;
+    line-height: 55px;
+    cursor: pointer;
+}
+.popup .popup_content .popup_title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.popup .popup_content .popup_subT {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 50px;
+}

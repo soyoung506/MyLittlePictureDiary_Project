@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\KimSoYoung\portfolio_SpringProject\soso\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+855441781.index
+3122648527.index
+50933200.index
+4235116743.index
+3615754724.index
+2834451933.index

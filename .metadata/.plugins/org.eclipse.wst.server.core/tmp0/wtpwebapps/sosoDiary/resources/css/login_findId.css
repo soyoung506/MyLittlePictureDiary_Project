@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 1500px;
+    margin: 100px auto;
+}
+.findId, .findInfo {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.findId h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #3F3F3F;
+    margin-bottom: 70px;
+}
+
+/* fieldset findIdText */
+.findIdText {
+    position: relative;
+    padding: 0;
+}
+.findIdText input {
+    position: relative;
+    display: block;
+    width: 600px;
+    height: 70px;
+    border: 1px solid #FFB500;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #3F3F3F;
+    padding: 0 30px;
+    margin-top: 50px;
+}
+.findIdText input:focus {
+    outline: 3px solid #FFB500;
+}
+
+/* input submit */
+input[type="submit"] {
+    position: relative;
+    width: 600px;
+    height: 70px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 2em;
+    color: #fff;
+    background-color: #FFD05C;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 50px 0 100px;
+}
+
+/* section findInfo */
+.findInfo div {
+    position: relative;
+    width: 350px;
+    margin: 0 auto;
+}
+.findInfo div p {
+    position: relative;
+    height: 25px;
+}
+.findInfo p a {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #888888;
+    text-decoration: underline;
+}
+.findInfo p a.join {
+    position: absolute;
+    left: 0;
+}
+.findInfo p a.login {
+    position: absolute;
+    right: 0;
+}
+p.checkfindId {
+    font-family: "pretendard";
+    font-weight: 400;
+    font-size: 1em;
+    color: #ff0000;
+    text-align: left;
+    padding: 10px;
+}

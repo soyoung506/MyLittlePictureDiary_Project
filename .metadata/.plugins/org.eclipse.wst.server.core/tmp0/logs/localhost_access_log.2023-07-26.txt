@@ -1,0 +1,14 @@
+127.0.0.1 - - [26/Jul/2023:17:19:53 +0900] "GET / HTTP/1.1" 404 807
+127.0.0.1 - - [26/Jul/2023:17:20:07 +0900] "GET /sosodiary/common/index.do HTTP/1.1" 404 840
+127.0.0.1 - - [26/Jul/2023:17:20:08 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+127.0.0.1 - - [26/Jul/2023:17:20:17 +0900] "GET /soso/common/index.do HTTP/1.1" 404 835
+127.0.0.1 - - [26/Jul/2023:17:22:03 +0900] "GET / HTTP/1.1" 404 807
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/common/index.do HTTP/1.1" 200 6900
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/css/index.css HTTP/1.1" 200 2733
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/css/header.css HTTP/1.1" 200 1178
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/css/reset.css HTTP/1.1" 200 1309
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/js/index.js HTTP/1.1" 200 285
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/js/jquery-3.6.4.min.js HTTP/1.1" 200 89797
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/resources/css/footer.css HTTP/1.1" 200 568
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/images/diary_img01.jpeg HTTP/1.1" 404 721
+127.0.0.1 - - [26/Jul/2023:17:22:17 +0900] "GET /sosodiary/common/images/diary_img01.jpeg HTTP/1.1" 404 721

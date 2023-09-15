@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.notice">
+
+<resultMap type="noticeVO" id="noticeResult">
+	<result property="notiNo" column="notiNo"/>
+	<result property="notiTitle" column="notiTitle"/>
+	<result property="notiContent" column="notiContent"/>
+	<result property="notiDate" column="notiDate"/>
+	<result property="notiCategory" column="notiCategory"/>
+</resultMap>
+
+<!-- 공지사항 및 자주묻는질문 페이지 로드 -->
+<select id="noticeList" resultMap="noticeResult" parameterType="hashMap">
+	<![CDATA[
+		select notiNo,notiTitle,notiContent,notiDate,notiCategory from
+		(select rownum rn, settbl.* from 
+		(select * from noticeTBL where notiCategory=#{notiCategory} order by notiNo desc) settbl)
+		where rn between (#{section}-1)*50+(#{pageNum}-1)*10+1 and (#{section}-1)*50+#{pageNum}*10
+	]]>
+</select>
+<select id="noticeTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(notiNo) from noticeTBL where notiCategory=#{notiCategory}
+	]]>
+</select>
+
+<!-- 공지사항 및 자주묻는질문 관리페이지 -->
+<select id="adminNotice" resultMap="noticeResult" parameterType="int">
+	<![CDATA[
+		select notiNo,notiTitle,notiContent,notiDate,notiCategory from noticeTBL where notiCategory=#{notiCategory} order by notiNo desc
+	]]>
+</select>
+
+<!-- 공지사항 삭제 -->
+<delete id="delNotice" parameterType="int">
+	<![CDATA[
+		delete from noticeTBL where notiNo=#{notiNo}
+	]]>
+</delete>
+<!-- 공지사항 저장 -->
+<select id="getNotiNo" resultType="int">
+	<![CDATA[
+		select nvl(max(notiNo),0) from noticeTBL
+	]]>
+</select>
+<insert id="addNotice" parameterType="noticeVO">
+	<![CDATA[
+		insert into noticeTBL (notiNo, notiTitle, notiContent, notiCategory)
+		values(#{notiNo},#{notiTitle},#{notiContent},#{notiCategory})
+	]]>
+</insert>
+
+
+
+</mapper>

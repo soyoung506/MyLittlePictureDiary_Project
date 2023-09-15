@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.diary">
+
+<resultMap type="diaryVO" id="diaryResult">
+	<result property="diaNo" column="diaNo"/>
+	<result property="diaTitle" column="diaTitle"/>
+	<result property="diaContent" column="diaContent"/>
+	<result property="diaView" column="diaView"/>
+	<result property="diaDraw" column="diaDraw"/>
+	<result property="diaPublic" column="diaPublic"/>
+	<result property="diaDate" column="diaDate"/>
+	<result property="gNo" column="gNo"/>
+	<result property="userNo" column="userNo"/>
+	<result property="userName" column="userName"/>
+	<result property="gName" column="gName"/>
+</resultMap>
+<resultMap type="commentVO" id="commentResult">
+	<result property="comNo" column="comNo"/>
+	<result property="comContent" column="comContent"/>
+	<result property="comDate" column="comDate"/>
+	<result property="userNo" column="userNo"/>
+	<result property="diaNo" column="diaNo"/>
+	<result property="diaTitle" column="diaTitle"/>
+	<result property="userName" column="userName"/>
+</resultMap>
+<resultMap type="groupVO" id="groupResult">
+	<result property="gNo" column="gNo"/>
+	<result property="gName" column="gName"/>
+	<result property="gPwd" column="gPwd"/>
+	<result property="gIntro" column="gIntro"/>
+	<result property="userNo" column="userNo"/>
+</resultMap>
+
+<!-- 나만의 일기 페이지 로드 -->
+<select id="myDiary" resultMap="diaryResult" parameterType="hashMap">
+	<![CDATA[
+		select diaNo,userName,diaView,diaDate,diaTitle,diaContent from
+		(select rownum rn, settbl.* from 
+		(select * from diaryTBL d JOIN userTBL u on d.userNo=u.userNo where d.userNo=#{userNo} and diaPublic=1 order by diaNo desc) settbl)
+		where rn between (#{section}-1)*30+(#{pageNum}-1)*6+1 and (#{section}-1)*30+#{pageNum}*6
+	]]>
+</select>
+<select id="myDiaryTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(diaNo) from diaryTBL where userNo=#{userNo} and diaPublic=1
+	]]>
+</select>
+<!-- 모두의 일기 페이지 로드 -->
+<select id="allDiary" resultMap="diaryResult" parameterType="hashMap">
+	<![CDATA[
+		select diaNo,userName,diaView,diaDate,diaTitle,diaContent from
+		(select rownum rn, settbl.* from 
+		(select * from diaryTBL d JOIN userTBL u on d.userNo=u.userNo where diaPublic=2 order by diaNo desc) settbl)
+		where rn between (#{section}-1)*30+(#{pageNum}-1)*6+1 and (#{section}-1)*30+#{pageNum}*6
+	]]>
+</select>
+<select id="allDiaryTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(diaNo) from diaryTBL where diaPublic=2
+	]]>
+</select>
+<!-- 우리의 일기 페이지 로드 -->
+<select id="ourDiary" resultMap="diaryResult" parameterType="hashMap">
+	<![CDATA[
+		select diaNo,userName,diaView,diaDate,diaTitle,diaContent from
+		(select rownum rn, settbl.* from 
+		(select * from diaryTBL d JOIN userTBL u on d.userNo=u.userNo where d.gNo=#{gNo} order by diaNo desc) settbl)
+		where rn between (#{section}-1)*30+(#{pageNum}-1)*6+1 and (#{section}-1)*30+#{pageNum}*6
+	]]>
+</select>
+<select id="ourDiaryTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(diaNo) from diaryTBL where gNo=#{gNo}
+	]]>
+</select>
+<select id="getGroupInfo" resultType="groupVO" parameterType="hashMap">
+	<![CDATA[
+		select gNo, gName, gIntro, gPwd from groupTBL where gNo=#{gNo}
+	]]>
+</select>
+<select id="getGroup" resultType="int" parameterType="int">
+	<![CDATA[
+		select nvl(gNo,0) from userTBL where userNo=#{userNo}
+	]]>
+</select>
+
+<!-- 일기 작성 -->
+<select id="getDiaNo" resultType="int">
+	<![CDATA[
+		select nvl(max(diaNo),0) from diaryTBL
+	]]>
+</select>
+<insert id="addDiary" parameterType="diaryVO">
+	<![CDATA[
+		insert into diaryTBL (diaNo, diaTitle, diaContent, diaDraw, diaPublic, gNo, userNo)
+		values(#{diaNo},#{diaTitle},#{diaContent},#{diaDraw},#{diaPublic},#{gNo},#{userNo})
+	]]>
+</insert>
+
+<!-- 조회수 증가 -->
+<update id="setView" parameterType="int">
+	<![CDATA[
+		update diaryTBL set diaView=diaView+1 where diaNo=#{diaNo}
+	]]>
+</update>
+<!-- 일기 내용 -->
+<select id="getDiary" resultType="diaryVO" parameterType="int">
+	<![CDATA[
+		select diaNo, diaTitle, diaContent, diaView, diaDate, d.userNo, userName from diaryTBL d join userTBL u on d.userNo=u.userNo where diaNo=#{diaNo}
+	]]>
+</select>
+
+<!-- 댓글 리스트 -->
+<select id="getComment" resultMap="commentResult" parameterType="int">
+	<![CDATA[
+		select comNo, comContent, comDate, c.userNo, userName from commentTBL c join userTBL u on c.userNo=u.userNo where diaNo=#{diaNo} order by comNo
+	]]>
+</select>
+
+<!-- 댓글 추가 -->
+<select id="getComNo" resultType="int">
+	<![CDATA[
+		select nvl(max(comNo),0) from commentTBL
+	]]>
+</select>
+<insert id="addComment" parameterType="commentVO">
+	<![CDATA[
+		insert into commentTBL (comNo, comContent, userNo, diaNo)
+		values(#{comNo},#{comContent},#{userNo},#{diaNo})
+	]]>
+</insert>
+
+<!-- 댓글 삭제 -->
+<delete id="delComment" parameterType="int">
+	<![CDATA[
+		delete from commentTBL where comNo=#{comNo}
+	]]>
+</delete>
+
+<!-- 일기 삭제 -->
+<delete id="delDiary" parameterType="int">
+	<![CDATA[
+		delete from diaryTBL where diaNo=#{diaNo}
+	]]>
+</delete>
+<delete id="delDiaryComment" parameterType="int">
+	<![CDATA[
+		delete from commentTBL where diaNo=#{diaNo}
+	]]>
+</delete>
+
+
+
+</mapper>

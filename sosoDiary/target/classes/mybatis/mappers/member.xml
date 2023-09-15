@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.member">
+
+<resultMap type="diaryVO" id="diaryResult">
+	<result property="diaNo" column="diaNo"/>
+	<result property="diaTitle" column="diaTitle"/>
+	<result property="diaContent" column="diaContent"/>
+	<result property="diaView" column="diaView"/>
+	<result property="diaDraw" column="diaDraw"/>
+	<result property="diaPublic" column="diaPublic"/>
+	<result property="diaDate" column="diaDate"/>
+	<result property="gNo" column="gNo"/>
+	<result property="userNo" column="userNo"/>
+	<result property="userName" column="userName"/>
+	<result property="gName" column="gName"/>
+</resultMap>
+<resultMap type="memberVO" id="memberResult">
+	<result property="userNo" column="userNo"/>
+	<result property="userId" column="userId"/>
+	<result property="userPwd" column="userPwd"/>
+	<result property="userName" column="userName"/>
+	<result property="userEmail" column="userEmail"/>
+	<result property="userDate" column="userDate"/>
+	<result property="userAdmin" column="userAdmin"/>
+	<result property="gNo" column="gNo"/>
+</resultMap>
+<resultMap type="commentVO" id="commentResult">
+	<result property="comNo" column="comNo"/>
+	<result property="comContent" column="comContent"/>
+	<result property="comDate" column="comDate"/>
+	<result property="userNo" column="userNo"/>
+	<result property="diaNo" column="diaNo"/>
+	<result property="diaTitle" column="diaTitle"/>
+	<result property="userName" column="userName"/>
+</resultMap>
+
+<!-- 인덱스 페이지 로드 -->
+<select id="indexDiary" resultMap="diaryResult">
+	<![CDATA[
+		select diaNo, diaTitle, diaContent, diaDraw from
+		(select rownum rn, settbl.* from 
+		(select * from diaryTBL where diaPublic=2 order by diaNo desc) settbl)
+		where rn between 1 and 3
+	]]>
+</select>
+
+<!-- 아이디 중복 확인 -->
+<select id="checkId" resultType="String" parameterType="memberVO">
+	<![CDATA[
+		select decode(count(*), 1, 'true', 'false') from userTBL where userId=#{userId}
+	]]>
+</select>
+<!-- 이메일 중복 확인 -->
+<select id="checkEmail" resultType="String" parameterType="memberVO">
+	<![CDATA[
+		select decode(count(*), 1, 'true', 'false') from userTBL where userEmail=#{userEmail}
+	]]>
+</select>
+<!-- 닉네임 중복 확인 -->
+<select id="checkName" resultType="String" parameterType="memberVO">
+	<![CDATA[
+		select decode(count(*), 1, 'true', 'false') from userTBL where userName=#{userName}
+	]]>
+</select>
+<!-- 회원번호 추출 -->
+<select id="getUserNo" resultType="int">
+	<![CDATA[
+		select nvl(max(userNo),0) from userTBL
+	]]>
+</select>
+<!-- 회원가입 -->
+<insert id="addMember" parameterType="memberVO">
+	<![CDATA[
+		insert into userTBL (userNo, userId, userPwd, userName, userEmail)
+		values(#{userNo},#{userId},#{userPwd},#{userName},#{userEmail})
+	]]>
+</insert>
+
+<!-- 로그인 -->
+<select id="login" resultType="boolean" parameterType="memberVO">
+	<![CDATA[
+		select decode(count(*), 1, 1, 0) from userTBL where userId=#{userId} and userPwd=#{userPwd}
+	]]>
+</select>
+<select id="loginUserNo" resultType="int" parameterType="memberVO">
+	<![CDATA[
+		select userNo from userTBL where userId=#{userId}
+	]]>
+</select>
+<select id="loginUserAdmin" resultType="int" parameterType="memberVO">
+	<![CDATA[
+		select userAdmin from userTBL where userId=#{userId}
+	]]>
+</select>
+
+<!-- 아이디 찾기 -->
+<select id="getId" resultType="String" parameterType="String">
+	<![CDATA[
+		SELECT CASE WHEN EXISTS (SELECT 1 FROM userTBL WHERE userEmail = #{userEmail}) 
+		        	THEN (SELECT userId FROM userTBL WHERE userEmail = #{userEmail})
+	        	ELSE 'noMember'
+		    END AS result
+		FROM dual
+	]]>
+</select>
+<!-- 비번 찾기 -->
+<select id="getPwd" resultType="boolean" parameterType="memberVO">
+	<![CDATA[
+		select decode(count(*), 1, 1, 0) from userTBL where userId=#{userId} and userEmail=#{userEmail}
+	]]>
+</select>
+<!-- 비번 재설정 -->
+<update id="resetPwd" parameterType="memberVO">
+	<![CDATA[
+		update userTBL set userPwd=#{userPwd} where userId=#{userId}
+	]]>
+</update>
+
+<!-- 마이페이지 (일기) -->
+<select id="myDiary" resultMap="diaryResult" parameterType="hashMap">
+	<![CDATA[
+		select diaNo,diaPublic,gName,diaView,diaDate,diaTitle,diaContent from
+		(select rownum rn, settbl.* from 
+		(select * from diaryTBL d left join groupTBL g on d.gNo=g.gNo where userNo=#{userNo} order by diaNo desc) settbl)
+		where rn between (#{section}-1)*30+(#{pageNum}-1)*6+1 and (#{section}-1)*30+#{pageNum}*6
+	]]>
+</select>
+<select id="myDiaryTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(diaNo) from diaryTBL where userNo=#{userNo}
+	]]>
+</select>
+<!-- 마이페이지 (댓글) -->
+<select id="myComment" resultMap="commentResult" parameterType="hashMap">
+	<![CDATA[
+		select * from
+		(select rownum rn, settbl.* from 
+		(select comDate,c.diaNo,diaTitle,comContent from commentTBL c JOIN diaryTBL d on c.diaNo=d.diaNo where c.userNo=#{userNo} order by comNo desc) settbl)
+		where rn between (#{section}-1)*50+(#{pageNum}-1)*10+1 and (#{section}-1)*50+#{pageNum}*10
+	]]>
+</select>
+<select id="myCommentTotal" resultType="int" parameterType="hashMap">
+	<![CDATA[
+		select count(comNo) from commentTBL where userNo=#{userNo}
+	]]>
+</select>
+
+<!-- 마이페이지 내 정보 -->
+<select id="memberInfo" resultType="memberVO" parameterType="int">
+	<![CDATA[
+		select userNo,userId,userEmail,userName,userDate,userPwd from userTBL where userNo=#{userNo}
+	]]>
+</select>
+<!-- 마이페이지 내 정보 수정 -->
+<update id="modMember" parameterType="memberVO">
+	<![CDATA[
+		update userTBL set userPwd=#{userPwd}, userEmail=#{userEmail} where userNo=#{userNo}
+	]]>
+</update>
+
+<!-- 그룹가입 -->
+<select id="group" resultType="boolean" parameterType="groupVO">
+	<![CDATA[
+		select decode(count(*), 1, 1, 0) from groupTBL where gName=#{gName} and gPwd=#{gPwd}
+	]]>
+</select>
+<select id="gNo" resultType="int" parameterType="groupVO">
+	<![CDATA[
+		select gNo from groupTBL where gName=#{gName}
+	]]>
+</select>
+<update id="groupJoin" parameterType="groupVO">
+	<![CDATA[
+		update userTBL set gNo=#{gNo} where userNo=#{userNo}
+	]]>
+</update>
+
+<!-- 그룹 생성 -->
+<select id="gName" resultType="boolean" parameterType="groupVO">
+	<![CDATA[
+		select decode(count(*), 1, 1, 0) from groupTBL where gName=#{gName}
+	]]>
+</select>
+<select id="getgNo" resultType="int">
+	<![CDATA[
+		select nvl(max(gNo),0) from groupTBL
+	]]>
+</select>
+<insert id="addGroup" parameterType="groupVO">
+	<![CDATA[
+		insert into groupTBL values(#{gNo},#{gName},#{gPwd},#{gIntro})
+	]]>
+</insert>
+
+<!-- 그룹 탈퇴 -->
+<update id="outGroup" parameterType="int">
+	<![CDATA[
+		update userTBL set gNo=NULL where userNo=#{userNo}
+	]]>
+</update>
+
+
+
+
+
+
+
+
+
+
+</mapper>

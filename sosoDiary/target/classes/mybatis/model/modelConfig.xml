@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+	<typeAliases>
+		<typeAlias type="com.spring.sosodiary.diary.vo.DiaryVO" alias="diaryVO"/>
+		<typeAlias type="com.spring.sosodiary.diary.vo.CommentVO" alias="commentVO"/>
+		<typeAlias type="com.spring.sosodiary.diary.vo.GroupVO" alias="groupVO"/>
+		<typeAlias type="com.spring.sosodiary.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="com.spring.sosodiary.notice.vo.NoticeVO" alias="noticeVO"/>
+	</typeAliases>
+</configuration>
+

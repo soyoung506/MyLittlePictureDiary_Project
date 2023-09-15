@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+
+body {
+    background-color: #FCFCFC;
+}
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+a {
+    color: #323232;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 1500px;
+    margin: 100px auto;
+}
+
+.notice {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+.notice h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #FFB500;
+    text-align: center;
+    margin-bottom: 70px;
+}
+.notice ul {
+    list-style: none;
+}
+.notice ul li {
+    position: relative;
+    width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.notice ul li.noNotice {
+	margin: 150px auto 200px;
+	text-align: center;
+	border: none;
+}
+
+/* 공지사항 타이틀 */
+.notice h2.notiTitle {
+    width: 100%;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #000;
+    position: relative;
+    width: 600px;
+    height: 70px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.notice h2.notiTitle img {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+}
+/* 공지사항 내용 */
+.notice div.notiContents {
+    display: none;
+    padding: 25px 20px;
+}
+.notice div.notiContents p {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #000;
+}
+.notice div.notiContents p:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+/* 페이지 버튼 */
+.arrow_box{
+    text-align: center;
+    margin: 80px 0 100px;
+}
+
+.arrow_box ul li{
+    display: inline-block;
+    font-family: 'humanBS';
+    vertical-align: top;
+    padding: 10px;
+    font-weight: bold;
+}
+.arrow_box ul li a.nowPage {
+	color: #FFB500;
+}
+
+.arrow_box ul li img{
+    width: 15px;
+}
+
+

@@ -1,0 +1,243 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "pretendard";
+    src: url("../font/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+    font-family: "humanBS";
+    src: url("../font/휴먼범석체.ttf") format("truetype");
+}
+body {
+    background-color: #FCFCFC;
+}
+fieldset {
+    border: none;
+}
+.blind {
+    display: none;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 1100px;
+    margin: 100px auto;
+}
+.drawing {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+}
+.drawing h1 {
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 3em;
+    color: #FFB500;
+    text-align: center;
+    margin-bottom: 70px;
+}
+.drawing div.canvasBox {
+    display: flex;
+}
+/* 캔버스 도구 */
+.drawing div.tool {
+    position: relative;
+    width: 80px;
+    height: 320px;
+    margin-right: 20px;
+    background-color: #fff;
+    border: 1px solid #CCC;
+    border-radius: 20px;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.1);
+}
+.drawing div.tool ul {
+    position: relative;
+    display: flex;
+    width: 80px;
+    overflow: hidden;
+}
+.drawing div.tool input.colorChange {
+    position: relative;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.drawing div.tool div.now {
+    position: relative;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #000000;
+    text-align: center;
+    padding-top: 30px;
+}
+.drawing div.tool button {
+    position: relative;
+    background-color: #fff;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.drawing .penWidth button div {  
+    margin: 0 auto;
+    background-color: #000;
+}
+.drawing .penWidth button div.pen2 {
+    width: 40px;
+    height: 2px;
+}
+.drawing .penWidth button div.pen7 {
+    width: 40px;
+    height: 7px;
+}
+.drawing .penWidth button div.pen12 {
+    width: 40px;
+    height: 12px;
+}
+.drawing .penWidth button div.pen20 {
+    width: 40px;
+    height: 20px;
+}
+.drawing .penClear button div {  
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #565656;
+    border-radius: 50%;
+}
+.drawing .penClear button div.clear2 {
+    width: 5px;
+    height: 5px;
+}
+.drawing .penClear button div.clear7 {
+    width: 10px;
+    height: 10px;
+}
+.drawing .penClear button div.clear15 {
+    width: 15px;
+    height: 15px;
+}
+.drawing .penClear button div.clear25 {
+    width: 25px;
+    height: 25px;
+}
+.drawing div.tool .allClear {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #000000;
+}
+/* 캔버스 */
+.drawing canvas{
+    background-color: #fff;
+    border: 1px solid #CCC;
+    border-radius: 20px;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* writing */
+.writing {
+    position: relative;
+    width: 800px;
+    margin: 50px auto 0;
+    text-align: right;
+}
+/* 공통 */
+.writing .selectOption select, .writeDiary input, .writeDiary textarea {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #FFB500;
+    border-radius: 15px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #3F3F3F;
+    padding: 0 30px;
+    background-color: #fff;
+}
+.writing select {
+    height: 50px;
+    /* appearance: none; */
+}
+.writing select:focus {
+    outline: 3px solid #FFB500;
+}
+.writing #publicArea {
+    margin-right: 10px;
+}
+.writing #diaryTitle, .writing textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+}
+.writing #diaryTitle {
+    height: 60px;
+}
+.writing #diaryTitle:focus {
+    outline: 3px solid #FFB500;
+}
+.writing #diaryContent {
+    height: 500px;
+    padding-top: 15px;
+    resize: none;
+}
+.writing textarea:focus {
+    outline: 3px solid #FFB500;
+}
+
+/* 저장 버튼 */
+.writing input[type="button"] {
+    position: relative;
+    width: 90px;
+    height: 45px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #fff;
+    background-color: #FFD05C;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.writing input[type="submit"] {
+    position: relative;
+    width: 90px;
+    height: 45px;
+    font-family: "humanBS";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #fff;
+    background-color: #FFD05C;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 30px;
+}

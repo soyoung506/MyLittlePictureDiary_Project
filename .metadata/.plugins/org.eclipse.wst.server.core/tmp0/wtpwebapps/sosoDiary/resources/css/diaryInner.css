@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'Humanbumsuk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UhBeeSeulvely';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSeulvely.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a, span, p{
+    font-family: 'Humanbumsuk';
+    font-size: 1.3em;
+    color: #323232;
+    text-decoration: none;
+}
+
+.all h2{
+    font-family: 'Humanbumsuk';
+    font-size: 3em;
+    color: #ffb500;
+    margin: 90px 0 70px 0;
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+.container{
+    width: 100%;
+}
+
+.all{
+    width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.diaryBox_top{
+    width: 1100px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow:  1px 5px 10px 1px #e4e4e4;
+}
+
+.contentImg{
+    margin: 20px 0;
+}
+
+.contentImg img{
+    width: 1000px;
+    height: 500px;
+    box-shadow:  1px 5px 10px 1px #e4e4e4;
+}
+
+.contentTop, .contentBox{
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 2px solid #eee;
+    box-sizing: border-box;
+    padding: 50px 0;
+}
+
+.contentBox{
+    border: none;
+}
+
+.contentTop span:nth-of-type(1){
+    float: left;
+    width: 600px;
+    text-align: left;
+    font-size: 1.3em;
+    padding: 5px;
+}
+.contentTop span:nth-of-type(2){
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding: 10px 0;
+}
+.contentTop span:nth-of-type(3){
+    float: left;
+    width: 130px;
+    text-align: right;
+    padding: 10px 0;
+}
+
+.contentBox{
+    width: 80%;
+    height: 100%;
+    text-align: left;
+    padding: 30px 0;
+}
+
+.contentBox p{
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+.diaryBox_middel{
+    width: 90%;
+    margin: 0 auto;
+}
+
+input{
+    font-size: 1.5em;
+    padding: 10px 30px;
+    height: 100px;
+    outline: none;
+    border: 1px solid #bcbcbc;
+    border-radius: 10px;
+    font-family: 'Humanbumsuk';
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+    width: 800px;
+    margin: 30px 0;
+    box-shadow:  5px 10px 10px 3px #e4e4e4;
+}
+
+input[type="submit"]{
+    height: 115px;
+    width: 200px;
+    margin-left: 30px;
+    background-color: #333333;
+    color: aliceblue;
+    box-shadow:  5px 10px 10px 3px #e4e4e4;
+}
+
+.diaryBox_bottom{
+    margin: 0 auto;
+    padding: 30px 0 100px 0;
+}
+
+.diaryBox_bottom a{
+    display: inline-block;
+    padding: 20px;
+    border: 1px solid #eee;
+    background-color: #ffb500;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+    box-shadow:  5px 10px 10px 3px #e4e4e4;
+}
+.diaryBox_bottom a.delDiary {
+	width: 200px;
+	background-color: #ffe19b;
+}
+
+.commentBox{
+    width: 72%;
+    margin: 0 auto 50px;
+}
+.commentBox ul{
+    width: 100%;
+    margin: 0 auto;
+}
+.commentBox ul li{
+	position: relative;
+    width: 100%;
+    padding: 15px 0;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+.commentBox ul li div{
+	font-family: 'Humanbumsuk';
+	font-size: 1.2em;
+	line-height: 1.2em;
+	margin-right: 10px;
+}
+.commentBox ul li div.index{
+	width: 40px;
+	text-align: center;
+}
+.commentBox ul li div.comContent{
+	width: 580px;
+	text-align: left;
+}
+.commentBox ul li div.userName{
+	width: 200px;
+}
+.commentBox ul li div.comDate{
+	width: 150px;
+}
+.commentBox ul li button{
+	width: 70px;
+	background: #b9b9b9;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-family: 'Humanbumsuk';
+	font-size: 1.1em;
+	cursor: pointer;
+	padding: 5px 0;
+}
