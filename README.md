@@ -9,7 +9,7 @@
 <br>
 
 ## 주요 기능
-상세 내용은 [이곳](https://drive.google.com/file/d/1-wZqHmHAOvbzBqxy0Cqy3i3B4_KQ6Nfz/view?usp=sharing "나의 소소한 그림일기 포트폴리오")에서 확인하세요.
+상세 내용은 [이곳](https://drive.google.com/file/d/1V3fmNXHrWF2RUDcwqnxNY2TjS2Oe7vD5/view?usp=sharing "나의 소소한 그림일기 포트폴리오")에서 확인하세요.
 ### Member
 + 회원가입, 로그인, 로그아웃, 아이디 찾기, 비밀번호 재설정, 회원정보 조회/수정, 마이페이지(내 일기 및 댓글 모아보기), 그룹 생성 및 가입/탈퇴
   <details>
